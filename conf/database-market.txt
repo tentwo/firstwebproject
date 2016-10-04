@@ -1,0 +1,14 @@
+ALTER DATABASE market_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table item_tbl(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  picture VARCHAR(255) NOT NULL DEFAULT 'default.png',
+  title varchar(255) NOT NULL,
+  price int NOT NULL,
+  discount int NOT NULL DEFAULT 2,
+  price_after_discount int NOT NULL,
+  positive_vote int NOT NULL DEFAULT 0,
+  negative_vote int NOT NULL DEFAULT 0
+);
+
+ALTER table item_tbl CHARACTER SET utf8 COLLATE utf8_general_ci;

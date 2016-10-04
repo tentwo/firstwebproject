@@ -1,0 +1,10 @@
+<div style="background:gray" class="column">
+    <br>
+    <img src="<%= picture %>" class="thumbnail" alt=""/>
+        <p id="title" style="background: red"><%= title %></p>
+        <span class="success badge"> طبقه<%= floor %></span>
+        <span class="success badge"> پلاک<%= number %></span>
+        <!--<span id="tel"><%= tel %></span>-->
+        <!--<span id="mobile"><%= mobile %></span>-->
+        <!--<span id="shopkeeper"><%= shopkeeper %></span>-->
+</div>

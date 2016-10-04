@@ -1,0 +1,140 @@
+ALTER DATABASE bazar_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table continent (
+  id int not null PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(50) NOT NULL
+);
+ALTER TABLE continent CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table country (
+  id int not null PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(50) NOT NULL,
+  continent_id int,
+  continent_title VARCHAR(50),
+  constraint fk_country_continent_id foreign key (continent_id)
+  references continent(id)
+);
+ALTER TABLE country CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table province (
+  id int not null PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(50) NOT NULL,
+  continent_id int,
+  continent_title VARCHAR(50),
+  country_id int,
+  country_title VARCHAR(50),
+  constraint fk_province_continent_id foreign key (continent_id)
+  references continent(id),
+  constraint fk_province_country_id foreign key (country_id)
+  references country(id)
+);
+ALTER TABLE province CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table city (
+  id int not null PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(50) NOT NULL,
+  continent_id int,
+  continent_title VARCHAR(50),
+  country_id int,
+  country_tile VARCHAR(50),
+  province_id int,
+  province_title VARCHAR(50),
+  constraint fk_city_continent_id foreign key (continent_id)
+  references continent(id),
+  constraint fk_city_country_id foreign key (country_id)
+  references country(id),
+  constraint fk_city_province_id foreign key (province_id)
+  references province(id)
+);
+ALTER TABLE city CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE city_area (
+  id int not null PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(50)
+);
+ALTER TABLE city_area CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE store_type (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(50) NOT NULL
+);
+ALTER TABLE store_type CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE enjoy_type (
+  id int not null PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(50) NOT NULL
+);
+ALTER TABLE enjoy_type CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE shop_center (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(50) NOT NULL,
+  positive_vote int,
+  negative_vote int,
+  modernity_level int,
+  facility_level int,
+  city_id int,
+  city_title VARCHAR(50),
+  city_area_id int,
+  city_area_title VARCHAR(50),
+  picture VARCHAR(255),
+  constraint fk_shop_center_city_id foreign key (city_id)
+  references city(id),
+  constraint fk_shop_center_city_area_id foreign key (city_area_id)
+  references city_area(id)
+);
+ALTER TABLE shop_center CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE shop_center_stores (
+  id int not null PRIMARY KEY AUTO_INCREMENT,
+  shop_center_id int,
+  store_type_id int,
+  store_type_title VARCHAR(50),
+  count int,
+  constraint fk_shop_center_stores_shop_center_id foreign key (shop_center_id)
+  references shop_center(id),
+  constraint fk_shop_center_stores_type_id foreign key (store_type_id)
+  references store_type(id)
+);
+CREATE INDEX  idx_shop_center_stores_shop_center_id
+  on shop_center_stores(shop_center_id);
+ALTER TABLE shop_center CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE shop_center_enjoys (
+  id int not null PRIMARY KEY AUTO_INCREMENT,
+  shop_center_id int,
+  enjoy_type_id int,
+  enjoy_type_title VARCHAR(50),
+  count int,
+  constraint fk_shop_center_enjoys_shop_center_id foreign key (shop_center_id)
+  references shop_center(id),
+  constraint fk_shop_center_enjoys_type_id foreign key (enjoy_type_id)
+  references enjoy_type(id)
+);
+CREATE INDEX  idx_shop_center_enjoys_shop_center_id
+  on shop_center_enjoys(shop_center_id);
+ALTER TABLE shop_center CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE store (
+  id int not null PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(50) NOT NULL,
+  shop_center_id int,
+  shop_center_title VARCHAR(50),
+  store_type_id int,
+  store_type_title VARCHAR(50),
+  floor int,
+  number int,
+  tel VARCHAR(11),
+  mobile VARCHAR(11),
+  shopkeeper_name VARCHAR(50),
+  positive_vote int,
+  negative_vote int,
+  for_men int,
+  for_women INT,
+  picture VARCHAR(255),
+  constraint fk_store_shop_center_id foreign key (shop_center_id)
+  references shop_center(id),
+  constraint fk_store_store_type_id foreign key (store_type_id)
+  references store_type(id)
+);
+ALTER TABLE store CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;

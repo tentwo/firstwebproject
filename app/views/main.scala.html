@@ -1,0 +1,66 @@
+@*
+ * This template is called from the `index` template. This template
+ * handles the rendering of the page header and body tags. It takes
+ * two arguments, a `String` for the title of the page and an `Html`
+ * object to insert into the body of the page.
+ *@
+@(title: String)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @* Here's where we render the page title `String`. *@
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/main.css")'>
+        <link rel="shortcut icon" type="image/png" href='@routes.Assets.versioned("images/favicon.png")'>
+        <link rel="stylesheet" href='@routes.Assets.versioned("libs/foundation/css/foundation.min.css")'>
+        <link rel="stylesheet" media="screen"
+            href='@routes.Assets.versioned("stylesheets/main.css")'>
+        <link rel="shortcut icon" type="image/png" href='@routes.Assets.versioned("images/favicon.png")'>
+        <script src='@routes.Assets.versioned("javascripts/hello.js")'></script>
+        <script src='@routes.Assets.versioned("libs/jquery-old/js/jquery.min.js")'></script>
+        <script>
+                $(document).ready(function(){
+                    var storeModel1 = new StoreModel({
+                        title:"adidas",
+                        picture:"assets/images/1.png",
+                        floor: 1,
+                        number: 2,
+                        tel: "02133394983",
+                        mobile: "09123394983",
+                        shopkeeper: "ali",
+                    });
+                    var storeModel2 = new StoreModel({
+                        title:"nike",
+                        picture:"assets/images/2.jpg",
+                        floor: 1,
+                        number: 23,
+                        tel: "02133394983",
+                        mobile: "09123394983",
+                        shopkeeper: "ahmad",
+                    });
+                    var storeCollection = new StoreCollection([storeModel2, storeModel1]);
+                    var pageContainerView = new PageContainerView({
+                        model: storeModel1,
+                        myCollection: storeCollection,
+                        el: $('body'),
+                        template: "<div id='target'></div>"
+                    });
+                });
+        </script>
+    </head>
+    <body>
+        @* And here's where we render the `Html` object containing
+         * the page content.*@
+
+        <script src='@routes.Assets.versioned("libs/foundation/js/vendor/foundation.min.js")'></script>
+        <script src='@routes.Assets.versioned("libs/underscore/js/underscore.min.js")'></script>
+        <script src='@routes.Assets.versioned("libs/backbonejs/backbone-min.js")'></script>
+        <script src='@routes.Assets.versioned("libs/epoxy/js/epoxy.min.js")'></script>
+        <script src='@routes.Assets.versioned("javascripts/despina.js")'></script>
+        <script src='@routes.Assets.versioned("backbone-template/model/StoreModel.js")'></script>
+        <script src='@routes.Assets.versioned("backbone-template/collection/StoreCollection.js")'></Script>
+        <script src='@routes.Assets.versioned("backbone-template/router/MarketRouter.js")'></script>
+        <script src='@routes.Assets.versioned("backbone-template/view/ContainerView.js")'></script>
+    </body>
+</html>

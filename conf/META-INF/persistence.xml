@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+
+    <persistence-unit name="market-pu" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>despina.market.orm.entities.ItemEntity</class>
+        <properties>
+            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/market_db?useUnicode=yes&amp;characterEncoding=utf-8"/>
+            <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="eclipselink.jdbc.user" value="root"/>
+            <property name="eclipselink.jdbc.password" value=""/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="bambino-persistence" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <properties>
+            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/bambino_db?useUnicode=yes&amp;characterEncoding=utf-8"/>
+            <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="eclipselink.jdbc.user" value="root"/>
+            <property name="eclipselink.jdbc.password" value=""/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="bazar-pu" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>despina.bazar.orm.entities.CityEntity</class>
+        <class>despina.bazar.orm.entities.CityAreaEntity</class>
+        <class>despina.bazar.orm.entities.ContinentEntity</class>
+        <class>despina.bazar.orm.entities.CountryEntity</class>
+        <class>despina.bazar.orm.entities.EnjoyTypeEntity</class>
+        <class>despina.bazar.orm.entities.ProvinceEntity</class>
+        <class>despina.bazar.orm.entities.ShopCenterEntity</class>
+        <class>despina.bazar.orm.entities.ShopCenterEnjoysEntity</class>
+        <class>despina.bazar.orm.entities.ShopCenterStoresEntity</class>
+        <class>despina.bazar.orm.entities.StoreEntity</class>
+        <class>despina.bazar.orm.entities.StoreTypeEntity</class>
+        <properties>
+            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/bazar_db?useUnicode=true&amp;characterEncoding=utf-8"/>
+            <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="eclipselink.jdbc.user" value="root"/>
+            <property name="eclipselink.jdbc.password" value=""/>
+        </properties>
+    </persistence-unit>
+</persistence>

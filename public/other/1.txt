@@ -1,0 +1,25 @@
+$.get({
+					url:"handlebars-template/Home.ust",
+					dataType:"text",
+					success: function(data){
+						that.homeTemplate = data;
+						that.homeView = new HomeView({
+							el: $("#target"),
+							model: that.model,
+							template: data});
+					},
+					async:false
+				});
+
+
+				$.getScript( "backbone-template/view/StoresView.js",
+                				function( data, textStatus, jqxhr ) {
+                					that.homeTemplate = "<p>hello</p>";
+                					that.homeView = new HomeView({
+                							el: $("#target"),
+                							model: that.model,
+                							template: data});
+                					},
+                					async:false
+                				});
+                			});

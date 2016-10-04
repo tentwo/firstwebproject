@@ -1,0 +1,42 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample bazar page
+GET     /                           controllers.HomeController.home
+GET     /                           controllers.HomeController.index
+# An example controller showing how to use dependency injection
+GET     /count                      controllers.CountController.count
+# An example controller showing how to write asynchronous code
+GET     /message                    controllers.AsyncController.message
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+#------------------------- store -------------------------------
+GET     /stores controllers.StoreController.getStore
+
+#------------------------- continent ---------------------------
+GET     /continents despina.bazar.controllers.models.ContinentController.getAllContinent
+GET     /continent despina.bazar.controllers.models.ContinentController.getContinentById(id: Int)
+GET     /continent/:id despina.bazar.controllers.models.ContinentController.getContinentByIdPath(id: Int)
+
+POST    /continent despina.bazar.controllers.models.ContinentController.postInsertContinent()
+#POST    /continent despina.bazar.controllers.models.ContinentController.postContinentById(id: Int)
+POST    /continent/:id despina.bazar.controllers.models.ContinentController.postContinentByIdPath(id: Int)
+
+PUT    /continent despina.bazar.controllers.models.ContinentController.putInsertContinent()
+#PUT    /continent despina.bazar.controllers.models.ContinentController.putContinentById(id: Int)
+PUT    /continent/:id despina.bazar.controllers.models.ContinentController.putContinentByIdPath(id: Int)
+
+DELETE    /continent despina.bazar.controllers.models.ContinentController.deleteContinentById(id: Int)
+DELETE    /continent despina.bazar.controllers.models.ContinentController.deleteInsertContinent()
+DELETE    /continent/:id despina.bazar.controllers.models.ContinentController.deleteContinentByIdPath(id: Int)
+
+#------------------------- country -----------------------------
+
+
+
+#---------------------------- views ----------------------------
+
+GET /bazar despina.bazar.controllers.views.HomeController.bazar

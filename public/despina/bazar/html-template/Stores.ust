@@ -1,0 +1,8 @@
+<div style="background-color:white" class="row small-up-1 medium-up-2 large-up-4" id="tile-continer">
+    <% _.each(storeCollection, function(i) { %>
+        <div class="column" style="background-color: white">
+            <img src="<%= i.picture %>" class="thumbnail" alt=""/>
+            <p style="background-color: white"><%= i.title %></p>
+        </div>
+    <% }); %>
+</div>

@@ -1,0 +1,6 @@
+.idea/
+bin/
+libexec/
+logs/
+project/
+target/
